@@ -1,19 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
+
 
 public class ReactionTimes : MonoBehaviour
 {
     private float startTime=0;
     private float hazardAppearanceTime = 7f;
     private bool hazardActive = false;
-    
-    private void start ()
+
+    private void Start ()
     {
         startTime = Time.time;
         Time.timeScale = 1;
         Debug.Log("Start method called");
         
+        // Check if the file already exists. If it doesn't, create the file and add a header row
+        if (!File.Exists("reaction_times.csv"))
+        {
+            File.WriteAllText("reaction_times.csv", "Reaction Time (seconds)\n");
+        }
     }
 
     private void Update()
@@ -40,6 +47,9 @@ public class ReactionTimes : MonoBehaviour
             float reactionTime = Time.time - hazardAppearanceTime;
             Debug.Log("Reaction time: " + reactionTime + " seconds");
             Debug.Log("Total time: " + Time.time + " seconds");
+
+            // Write the reaction time to the file
+            File.AppendAllText("reaction_times.csv", reactionTime + "\n");
             startTime = 0;
         }
         //if (Input.GetKeyDown(KeyCode.Space) && hazardActive)
@@ -49,4 +59,3 @@ public class ReactionTimes : MonoBehaviour
         //}
     }
 }
-
