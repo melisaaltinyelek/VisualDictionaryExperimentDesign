@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-
+using UnityEngine.SceneManagement;
 
 public class ReactionTimes : MonoBehaviour
 {
@@ -32,7 +32,7 @@ public class ReactionTimes : MonoBehaviour
             //Debug.Log("startTime: " + startTime);
             Debug.Log("Hazard active");
         }
-        if (hazardActive && Input.GetKeyDown(KeyCode.Space))
+        if (hazardActive && Input.GetKeyDown(KeyCode.Joystick1Button0))
         {
             startTime = Time.time;
             Debug.Log("startTime: " + startTime);
@@ -42,7 +42,7 @@ public class ReactionTimes : MonoBehaviour
             startTime = Time.time;
         }
     
-        if (startTime > 0 && Input.GetKeyDown(KeyCode.Space))
+        if (startTime > 0 && Input.GetKeyDown(KeyCode.Joystick1Button0))
         {
             float reactionTime = Time.time - hazardAppearanceTime;
             Debug.Log("Reaction time: " + reactionTime + " seconds");
@@ -51,11 +51,12 @@ public class ReactionTimes : MonoBehaviour
             // Write the reaction time to the file
             File.AppendAllText("reaction_times.csv", reactionTime + "\n");
             startTime = 0;
+
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
         }
-        //if (Input.GetKeyDown(KeyCode.Space) && hazardActive)
-        //{
-            //float reactionTime = Time.time - startTime;
-            //Debug.Log("Reaction time: " + reactionTime + " seconds");
-        //}
+
+
+
+        
     }
 }
