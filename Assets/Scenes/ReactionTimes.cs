@@ -17,10 +17,10 @@ public class ReactionTimes : MonoBehaviour
         Debug.Log("Start method called");
         
         // Check if the file already exists. If it doesn't, create the file and add a header row
-        if (!File.Exists("reaction_times.csv"))
-        {
-            File.WriteAllText("reaction_times.csv", "Reaction Time (seconds)\n");
-        }
+        //if (!File.Exists("reaction_times.csv"))
+        //{
+            //File.WriteAllText("reaction_times.csv", "Reaction Time (seconds)\n");
+        //}
     }
 
     private void Update()
@@ -49,7 +49,7 @@ public class ReactionTimes : MonoBehaviour
             Debug.Log("Total time: " + Time.time + " seconds");
 
             // Write the reaction time to the file
-            File.AppendAllText("reaction_times.csv", reactionTime + "\n");
+            //File.AppendAllText("reaction_times.csv", reactionTime + "\n");
             startTime = 0;
 
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
