@@ -2,15 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
+using UnityEngine.SceneManagement;
 
-public class VideoSwitcher: MonoBehaviour
+public class VideoSwitcher : MonoBehaviour
 {
-
-    private float startTime=0;
+    private float startTime = 0;
     private float hazardAppearanceTime = 7f;
     private bool hazardActive = false;
-
+    private int videoCounter = 0;
+    public int videosPerTrial = 3;
     public GameObject[] videos;
+    private int[] usedVideos;
+    private int currentSceneIndex;
     private int currentVideoIndex;
 
     void Start()
@@ -19,8 +22,16 @@ public class VideoSwitcher: MonoBehaviour
         Time.timeScale = 1;
         Debug.Log("Start method called");
 
+        currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+        // Initialize the usedVideos array
+        usedVideos = new int[videosPerTrial];
+        for (int i = 0; i < usedVideos.Length; i++)
+        {
+            usedVideos[i] = -1;
+        }
+
         ShowRandomVideo();
-        
     }
 
     void Update()
@@ -28,13 +39,18 @@ public class VideoSwitcher: MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             ShowRandomVideo();
+
+            videoCounter++;
+            if (videoCounter >= videosPerTrial)
+            {
+                SceneManager.LoadScene(currentSceneIndex + 1);
+            }
         }
 
         if (Time.time >= hazardAppearanceTime && !hazardActive)
         {
-            
+
             hazardActive = true;
-            //Debug.Log("startTime: " + startTime);
             Debug.Log("Hazard active");
         }
         if (hazardActive && Input.GetKeyDown(KeyCode.Space))
@@ -42,36 +58,37 @@ public class VideoSwitcher: MonoBehaviour
             startTime = Time.time;
             Debug.Log("startTime: " + startTime);
         }
-          if (startTime == 0)
+        if (startTime == 0)
         {
             startTime = Time.time;
         }
-    
+
         if (startTime > 0 && Input.GetKeyDown(KeyCode.Space))
         {
             float reactionTime = Time.time - hazardAppearanceTime;
             Debug.Log("Reaction time: " + reactionTime + " seconds");
             Debug.Log("Total time: " + Time.time + " seconds");
 
-            // Write the reaction time to the file
-            //File.AppendAllText("reaction_times.csv", reactionTime + "\n");
             startTime = 0;
         }
 
     }
 
+    private List<int> playedVideoIndices = new List<int>();
+
     void ShowRandomVideo()
     {
-        if (videos.Length > 0)
+        if (videos.Length > 0 && playedVideoIndices.Count < videos.Length)
         {
-            int newVideoIndex = currentVideoIndex;
-
-            while (newVideoIndex == currentVideoIndex)
+            int newVideoIndex;
+            do
             {
                 newVideoIndex = Random.Range(0, videos.Length);
-            }
+            } while (playedVideoIndices.Contains(newVideoIndex));
 
             currentVideoIndex = newVideoIndex;
+
+            playedVideoIndices.Add(currentVideoIndex);
 
             for (int i = 0; i < videos.Length; i++)
             {
@@ -79,5 +96,5 @@ public class VideoSwitcher: MonoBehaviour
             }
         }
     }
-}
 
+}
