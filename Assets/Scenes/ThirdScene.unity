@@ -199,7 +199,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 650401703}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 5185effb06d4a42878f8539e1ebd491e, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 92270eb7625ca47bba57f2c24f74c01d, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -214,12 +214,14 @@ VideoPlayer:
   m_AudioOutputMode: 2
   m_TargetAudioSources:
   - {fileID: 0}
+  - {fileID: 0}
   m_DirectAudioVolumes:
   - 1
+  - 1
   m_Url: 
-  m_EnabledAudioTracks: 01
-  m_DirectAudioMutes: 00
-  m_ControlledAudioTrackCount: 1
+  m_EnabledAudioTracks: 0101
+  m_DirectAudioMutes: 0000
+  m_ControlledAudioTrackCount: 2
   m_PlayOnAwake: 1
   m_SkipOnDrop: 1
   m_Looping: 0
@@ -511,7 +513,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1426852322}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 0a8400fa0f0d84e4a94e935ab30ccf95, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 38d96a2a2151a4cc38776c335baa3659, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -526,12 +528,14 @@ VideoPlayer:
   m_AudioOutputMode: 2
   m_TargetAudioSources:
   - {fileID: 0}
+  - {fileID: 0}
   m_DirectAudioVolumes:
   - 1
+  - 1
   m_Url: 
-  m_EnabledAudioTracks: 01
-  m_DirectAudioMutes: 00
-  m_ControlledAudioTrackCount: 1
+  m_EnabledAudioTracks: 0101
+  m_DirectAudioMutes: 0000
+  m_ControlledAudioTrackCount: 2
   m_PlayOnAwake: 1
   m_SkipOnDrop: 1
   m_Looping: 0
@@ -645,7 +649,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1946797243}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 05ba3d161ed554b94a2489b65523d289, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 685dc88640839496c94262ff64316d48, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -660,12 +664,14 @@ VideoPlayer:
   m_AudioOutputMode: 2
   m_TargetAudioSources:
   - {fileID: 0}
+  - {fileID: 0}
   m_DirectAudioVolumes:
   - 1
+  - 1
   m_Url: 
-  m_EnabledAudioTracks: 01
-  m_DirectAudioMutes: 00
-  m_ControlledAudioTrackCount: 1
+  m_EnabledAudioTracks: 0101
+  m_DirectAudioMutes: 0000
+  m_ControlledAudioTrackCount: 2
   m_PlayOnAwake: 1
   m_SkipOnDrop: 1
   m_Looping: 0
