@@ -10,8 +10,6 @@ public class VideoSwitcher: MonoBehaviour
     private float hazardAppearanceTime = 7f;
     private bool hazardActive = false;
 
-
-
     public GameObject[] videos;
     private int currentVideoIndex;
 
