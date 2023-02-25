@@ -6,7 +6,7 @@ using System.IO;
 
 public class ParticipantID : MonoBehaviour
 {
-    public string fileName = "ParticipantIDs.csv";
+    public string fileName = "reaction_times.csv";
     private string participantID = "";
 
     private void OnGUI()
@@ -25,7 +25,7 @@ public class ParticipantID : MonoBehaviour
     private void SaveParticipantID()
     {
         // Append the participant ID to a CSV file
-        string filePath = Path.Combine(Application.dataPath, "participantIDs.csv");
+        string filePath = Path.Combine(Application.dataPath, "reaction_times.csv");
         StreamWriter writer = new StreamWriter(filePath, true);
         writer.WriteLine(participantID);
         writer.Close();

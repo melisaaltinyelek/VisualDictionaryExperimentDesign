@@ -420,6 +420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: ParticipantIDs.csv
+  participantID: 
 --- !u!1 &1959610061
 GameObject:
   m_ObjectHideFlags: 0

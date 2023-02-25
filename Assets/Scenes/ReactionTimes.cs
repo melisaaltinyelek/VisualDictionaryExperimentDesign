@@ -34,7 +34,7 @@
 //         }
 //         if (hazardActive && Input.GetKeyDown(KeyCode.Joystick1Button0))
 //         {
-//             startTime = Time.time;
+//             startTime = Time.time;s
 //             Debug.Log("startTime: " + startTime);
 //         }
 //           if (startTime == 0)
