@@ -12,6 +12,12 @@ public class VideoSwitcher : MonoBehaviour
     private int videoCounter = 0;
     public int videosPerTrial = 3;
     public GameObject[] videos;
+    public float[][] hazardAppearanceTimes = new float[][]
+    {
+        new float[] {5.0f, 10.0f, 15.0f},
+        new float[] {6.0f, 12.0f, 18.0f},
+        new float[] {7.0f, 14.0f, 21.0f}
+    };
     private int[] usedVideos;
     private int currentSceneIndex;
     private int currentVideoIndex;
@@ -94,7 +100,8 @@ public class VideoSwitcher : MonoBehaviour
             {
                 videos[i].SetActive(i == currentVideoIndex);
             }
+            hazardAppearanceTime = hazardAppearanceTimes[currentVideoIndex][playedVideoIndices.Count - 1];
+            Debug.Log("Hazard appearance time: " + hazardAppearanceTime);
         }
     }
-
 }
