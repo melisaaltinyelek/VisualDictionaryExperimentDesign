@@ -55,16 +55,18 @@ public class VideoSwitcher : MonoBehaviour
 
         if (startTime > 0 && Input.GetKeyDown(KeyCode.Space))
         {
+
             float reactionTime = Time.time - hazardAppearanceTime;
             Debug.Log("Reaction time: " + reactionTime + " seconds");
             Debug.Log("Total time: " + Time.time + " seconds");
 
             startTime = 0f;
 
-            // Append the participant ID and reaction time to a CSV file
             string filePath = Path.Combine(Application.dataPath, "reaction_times.csv");
             StreamWriter writer = new StreamWriter(filePath, true);
-            writer.WriteLine(participantID + "," + reactionTime.ToString());
+            string videoName = videos[currentVideoIndex].GetComponent<VideoPlayer>().clip.name;
+            Debug.Log("Video name: " + videoName);
+            writer.WriteLine(participantID + "," + reactionTime.ToString() + "," + videoName);
             writer.Close();
 
             videoCounter++;
