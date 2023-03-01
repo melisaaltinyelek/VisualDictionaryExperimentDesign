@@ -9,17 +9,23 @@ public class VideoSwitcher : MonoBehaviour
 {
     public int videosPerTrial = 3;
     public GameObject[] videos;
-    public float[][] hazardAppearanceTimes = new float[][] {
-        new float[] {5.0f, 10.0f, 15.0f},
-        new float[] {6.0f, 12.0f, 18.0f},
-        new float[] {7.0f, 14.0f, 21.0f}
+    public Dictionary<string, float> hazardAppearanceToVideoMap = new Dictionary<string, float> {
+        {"Video_1", 5.0f},
+        {"Video_2", 7.0f},
+        {"Video_3", 10.0f},
+        {"Video_4", 13.0f},
+        {"Video_5", 17.0f},
+        {"Video_6", 19.0f},
+        {"Video_7", 5.0f},
+        {"Video_8", 3.0f},
+        {"Video_9", 12.0f}
     };
-    
+
     private int[] usedVideos;
     private int currentSceneIndex;
     private int currentVideoIndex;
+    private float hazardAppearanceTime = 0f;
     private float startTime = 0f;
-    private float hazardAppearanceTime = 7f;
     private bool hazardActive = false;
     private int videoCounter = 0;
     private string participantID = "";
@@ -72,7 +78,8 @@ public class VideoSwitcher : MonoBehaviour
             videoCounter++;
             if (videoCounter >= videosPerTrial)
             {
-                SceneManager.LoadScene(currentSceneIndex + 1);
+                videoCounter = 0;
+                SceneManager.LoadScene(currentSceneIndex + 1 > SceneManager.sceneCountInBuildSettings ? 0 : currentSceneIndex + 1);
             }
             else
             {
@@ -81,28 +88,57 @@ public class VideoSwitcher : MonoBehaviour
         }
     }
 
-    void ShowRandomVideo()
+   void ShowRandomVideo()
+{
+    if (videos.Length > 0 && videoCounter < videosPerTrial)
     {
-        if (videos.Length > 0 && currentVideoIndex < videos.Length)
+        int newVideoIndex;
+        do
         {
-            int newVideoIndex;
-            do
-            {
-                newVideoIndex = Random.Range(0, videos.Length);
-            } while (System.Array.IndexOf(usedVideos, newVideoIndex) != -1);
+            newVideoIndex = Random.Range(0, videos.Length);
+        } while (System.Array.IndexOf(usedVideos, newVideoIndex) != -1);
 
-            currentVideoIndex = newVideoIndex;
-            usedVideos[videoCounter] = currentVideoIndex;
+        currentVideoIndex = newVideoIndex;
+        usedVideos[videoCounter] = currentVideoIndex;
 
-            for (int i = 0; i < videos.Length; i++)
-            {
-                videos[i].SetActive(i == currentVideoIndex);
-            }
+        for (int i = 0; i < videos.Length; i++)
+        {
+            videos[i].SetActive(i == currentVideoIndex);
+        }
 
-            hazardAppearanceTime = hazardAppearanceTimes[currentVideoIndex][videoCounter];
+        VideoPlayer currentVideoPlayer = videos[currentVideoIndex].GetComponent<VideoPlayer>();
+        currentVideoPlayer.Prepare();
+
+        string videoName = currentVideoPlayer.clip.name;
+        if (hazardAppearanceToVideoMap.TryGetValue(videoName, out float hazardTime))
+        {
+            hazardAppearanceTime = hazardTime;
+            hazardActive = false;
             Debug.Log("Hazard appearance time: " + hazardAppearanceTime);
         }
+        else
+        {
+            Debug.LogWarning("Hazard appearance time not found for video: " + videoName);
+        }
+
+        currentVideoPlayer.started += (vp) =>
+        {
+            hazardActive = true;
+            Debug.Log("Hazard active");
+        };
+
+        currentVideoPlayer.seekCompleted += (vp) =>
+        {
+            if (hazardActive && startTime == 0)
+            {
+                startTime = Time.time;
+                Debug.Log("Start time: " + startTime);
+            }
+        };
     }
+}
+
+
 
     private void OnGUI()
     {
