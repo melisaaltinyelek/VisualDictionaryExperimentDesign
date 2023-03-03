@@ -138,11 +138,9 @@ public class VideoSwitcher : MonoBehaviour
     }
 }
 
-
-
-    private void OnGUI()
-    {
-        GUILayout.Label("Participant ID:");
-        participantID = GUILayout.TextField(participantID, GUILayout.Width(200));
-    }
+    // private void OnGUI()
+    // {
+    //     GUILayout.Label("Participant ID:");
+    //     participantID = GUILayout.TextField(participantID, GUILayout.Width(200));
+    // }
 }

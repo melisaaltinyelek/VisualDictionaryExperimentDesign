@@ -19,6 +19,7 @@ public class ParticipantID : MonoBehaviour
         if (GUILayout.Button("Save ID", GUILayout.Width(100)))
         {
             SaveParticipantID();
+            
         }
     }
 
@@ -29,6 +30,7 @@ public class ParticipantID : MonoBehaviour
         StreamWriter writer = new StreamWriter(filePath, true);
         writer.WriteLine(participantID);
         writer.Close();
+
 
         // Load the next scene (we can put name of the scene e.g. "welcome screen")
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
