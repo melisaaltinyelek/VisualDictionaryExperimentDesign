@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/InputSample.unity
     guid: 3fca168d95ca38f4794be1ab489c89a1
   - enabled: 1
-    path: Assets/Scenes/WelcomeScene.unity
-    guid: d64f33b66013f4465b6a095ed481d72b
+    path: Assets/Scenes/WelcomeScene 1.unity
+    guid: f872d44fd726e6d44a3f10947dfc664b
   - enabled: 1
     path: Assets/Scenes/Instructions.unity
     guid: cc8944ae771571a48a23bd031db590c2
@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ThirdScene.unity
     guid: 215d2b939480343579b3cd6ad7c2f784
+  - enabled: 1
+    path: Assets/Scenes/TheEnd.unity
+    guid: d64f33b66013f4465b6a095ed481d72b
   m_configObjects: {}

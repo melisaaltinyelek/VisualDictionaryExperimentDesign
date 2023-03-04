@@ -385,6 +385,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1950435352}
   - component: {fileID: 1950435353}
+  - component: {fileID: 1950435354}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -419,8 +420,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63ff136f22f3b8c4eaded6eaada4c71c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: ParticipantIDs.csv
-  participantID: 
+  fileName: reaction_times.csv
+--- !u!114 &1950435354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950435350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4475e4d926f2c9746b373746753e3cd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1959610061
 GameObject:
   m_ObjectHideFlags: 0
