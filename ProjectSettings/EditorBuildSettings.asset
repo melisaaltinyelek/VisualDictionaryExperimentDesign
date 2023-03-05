@@ -18,8 +18,14 @@ EditorBuildSettings:
     path: Assets/Scenes/FirstScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
+    path: Assets/Scenes/Pause1.unity
+    guid: 2e6ea6daaa25e86449f6c56e7847b256
+  - enabled: 1
     path: Assets/Scenes/SecondScene.unity
     guid: 71496667a0a07433db0308c2fc278a60
+  - enabled: 1
+    path: Assets/Scenes/Pause2.unity
+    guid: 8bba995a6f35a3a44ae58636f28c6406
   - enabled: 1
     path: Assets/Scenes/ThirdScene.unity
     guid: 215d2b939480343579b3cd6ad7c2f784
