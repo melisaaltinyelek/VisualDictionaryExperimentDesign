@@ -38,11 +38,13 @@ public class ParticipantID : MonoBehaviour
 }
 
 
-
     private void SaveParticipantID()
     {
+         // Save the participant ID
+        PlayerPrefs.SetString("ParticipantID", participantID);
+        PlayerPrefs.Save();
         // Append the participant ID to a CSV file
-        string filePath = Path.Combine(Application.persistentDataPath, fileName);
+        string filePath = Path.Combine(Application.persistentDataPath, "reaction_times.csv");
         StreamWriter writer = new StreamWriter(filePath, true);
         writer.WriteLine(participantID);
         writer.Close();
